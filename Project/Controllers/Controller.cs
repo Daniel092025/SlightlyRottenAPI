@@ -22,11 +22,11 @@ using System.Threading.Tasks;
 
         public async Task<IActionResult> Index()
     {
-        var movie = await _context.Movies
+        var movies = await _context.Movies
         .OrderBy(m => m.Title)
         .ToListAsync();
        
-        return View(movie);
+        return View(movies);
 
     }
 
