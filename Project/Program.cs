@@ -24,9 +24,9 @@ builder.Services.AddSwaggerGen(options =>
 
 // Databasen og service. Er ish navn / placeholder navn.
 
-/* builder.Services.AddMovieDb<MovieDb>(options =>
+builder.Services.AddDbContext<MovieDb>(options =>
     options.UseSqlite("Data Source = MovieDb"));
-builder.Services.AddScoped<IMovieService, MovieService>(); */
+builder.Services.AddScoped<IMovieService, MovieService>();
 
 var app = builder.Build();
 
