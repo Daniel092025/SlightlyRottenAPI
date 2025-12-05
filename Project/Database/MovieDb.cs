@@ -1,7 +1,8 @@
-
+using Microsoft.EntityFrameworkCore;
 //Database ORM for MovieDatabaseSQL.db
 
 namespace Project.Database
+
 {
     public class MovieDb : DbContext
     {
