@@ -1,6 +1,8 @@
 
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Project.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
