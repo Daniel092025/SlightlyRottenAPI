@@ -12,8 +12,12 @@ namespace Project.Database
         {
             optionsBuilder.UseSqlite("Data Source=MovieDatabaseSQL.db");
         }
+
     }
 
-// Needs more code here
+// Update database: add / remove movies. Add/Remove Actors, Ratings and Reviews.
+
+
+
     
 }
