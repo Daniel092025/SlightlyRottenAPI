@@ -9,4 +9,5 @@ public class Movie
     public string? Actors {get; set; }
     public int Year {get; set; }
     public int Playtime {get; set; }
+     public int? MovieId { get; set; }
 }
