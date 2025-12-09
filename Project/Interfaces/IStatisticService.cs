@@ -12,8 +12,8 @@ public interface IStatisticService
 }
 public class TopRatedItem
 {
-    public string ImdbId { get; set; }
-    public string Title { get; set; }
+    public string? ImdbId { get; set; }
+    public string? Title { get; set; }
     public double AverageRating { get; set; }
     public int ReviewCount { get; set; }
 }
