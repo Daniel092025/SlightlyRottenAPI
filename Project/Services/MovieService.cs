@@ -1,4 +1,5 @@
 using Project.Database;
+using Microsoft.EntityFrameworkCore;
 
 public class MovieService : IMovieService
 {
