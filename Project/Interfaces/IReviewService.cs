@@ -2,6 +2,6 @@
 
 public interface IReviewService
 {
-    Task<ReviewService> AddReviewAsync(ReviewService review);
-    Task<ReviewService?> UpdateReviewAsync(int reviewId, ReviewService updated);
+    Task<Review> AddReviewAsync(Review review);
+    Task<Review?> UpdateReviewAsync(int reviewId, Review updated);
 }
