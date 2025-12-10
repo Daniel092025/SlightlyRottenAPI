@@ -69,23 +69,24 @@ using System.Threading.Tasks;
     }
     
     [HttpPost]
-    public async Task<ActionResult<Movie>>Create([FromBody] Movie movie)
+    public async Task<ActionResult<Movie>> Create([FromBody] Movie movie)
     {
         if(!ModelState.IsValid)
         {
-            return BadRequest(" id route and body must match");
+            return BadRequest(ModelState);
+        }
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetMovie),
             new {id = movie.Id}, movie);
 
-        }
+        
      }   
         [HttpPut("{id:string}")]
         public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
-        if(id != movie.Id)     
+        if(id ! = movie.Id)     
 
         return BadRequest();
 
@@ -125,17 +126,19 @@ using System.Threading.Tasks;
     public async Task<ActionResult<IEnumerable<Review>>>GetReviews(string id)
 
     {
-        var exist = await _context.Movies.AnyAsync(m => m.Id ==id);
-        if(!exist)
+        if (!await _context.Movies.AnyAsync(m => m.Id ==id))
         return NotFound();
 
-        var rewiews = await _reviewservice.GetReviews(id);
-        return Ok(rewiews);
+        var reviews = await _reviewservice.GetReviewsByMovieIdAsync(id);
+
+        return Ok(reviews);
         
     }
     
 
     }
+
+    
 
 
 

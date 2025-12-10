@@ -1,5 +1,6 @@
 using Project.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 public class ReviewService : IReviewService
 {
@@ -28,6 +29,15 @@ public class ReviewService : IReviewService
 
         await _context.SaveChangesAsync();
         return existingReview;
+
+        
+    }
+    public async Task<List<Review>> GetReviewByMovieIdAsync(int MovieId)
+    {
+        return await _context.Reviews
+        .Where(r => r.MovieId == MovieId)
+        .OrderByDescending(r => r.Id)
+        .ToListAsync();
     }
 }
 

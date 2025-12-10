@@ -1,5 +1,5 @@
 // litt usikker om denne trengs med tanke på Rating.cs har noe som overlapper denne.
-using Project.Models;
+
 
 public class Review
 {
@@ -12,5 +12,6 @@ public class Review
 
     // Nullable foreign keys (bare én brukes)
     public Movie? Movie { get; set; }
+     public int? MovieId { get; set; }
 
 }
