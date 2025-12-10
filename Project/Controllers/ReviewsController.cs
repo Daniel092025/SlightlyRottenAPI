@@ -12,7 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 [ApiController]
-[Route("/Controller")]
+[Route("api/Controller")]
     public class MoviesController : ControllerBase
     {
     
@@ -122,8 +122,8 @@ using System.Threading.Tasks;
       return NoContent();
     }
     
-    [HttpGet("{id:string}/review")]
-    public async Task<ActionResult<IEnumerable<Review>>> GetreviewsByMovieIdAsync(string id)
+    [HttpGet("{id:int}/review")]
+    public async Task<ActionResult<IEnumerable<Review>>>GetReviews(string id)
 
     {
         if (!await _context.Movies.AnyAsync(m => m.Id ==id))
