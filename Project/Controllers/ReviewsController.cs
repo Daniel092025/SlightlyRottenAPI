@@ -12,7 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 [ApiController]
-[Route("/Controller")]
+[Route("api/Controller")]
     public class MoviesController : ControllerBase
     {
     
@@ -58,7 +58,7 @@ using System.Threading.Tasks;
         return Ok(movies);
 
     }
-    [HttpGet("{id:int}")]
+    [HttpGet("{id:string}")]
         public async Task<ActionResult<Movie>> GetMovie(string id)
      {
         var movie = await _context.Movies
@@ -82,7 +82,7 @@ using System.Threading.Tasks;
 
         }
      }   
-        [HttpPut("{id:int}")]
+        [HttpPut("{id:string}")]
         public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
         if(id != movie.Id)     
@@ -109,8 +109,8 @@ using System.Threading.Tasks;
             return NoContent();
     }
     
-    [HttpDelete("{id:int}")]
-    public async Task<ActionResult>Delete(int id )
+    [HttpDelete("{id:string}")]
+    public async Task<ActionResult>Delete(string id )
     {
       var movie = await _context.Movies.FindAsync(id);
       if (movie == null)
