@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Project.Database;
+using Project.Models;
 using System.Threading.Tasks;
 
 
@@ -9,10 +9,10 @@ using System.Threading.Tasks;
     {
     
     
-    private  readonly MovieDb _context;
+    private  readonly MovieDatabaseSqlContext _context;
      private  readonly IReviewService _reviewservice;
     
-     public MoviesController (MovieDb context, IReviewService reviewService)
+     public MoviesController (MovieDatabaseSqlContext context, IReviewService reviewService)
     {
        
        _context = context;

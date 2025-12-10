@@ -1,4 +1,4 @@
-
+using Project.Models;
 
 public interface IMovieService
 {

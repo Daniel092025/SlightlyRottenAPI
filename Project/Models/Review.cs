@@ -1,5 +1,5 @@
 // litt usikker om denne trengs med tanke på Rating.cs har noe som overlapper denne.
-
+using Project.Models;
 
 public class Review
 {

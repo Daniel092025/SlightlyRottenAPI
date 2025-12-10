@@ -1,5 +1,5 @@
 using Xunit;
-
+using Project.Models;
 
 
 public class MovieTests
@@ -50,7 +50,7 @@ public class MovieTests
         Assert.Null(movie.Director);
         Assert.Null(movie.Actors);
         
-        // Then
+        
     }
     
     [Theory]
