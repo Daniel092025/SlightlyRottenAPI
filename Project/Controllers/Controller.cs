@@ -5,23 +5,23 @@ using Project.Models;
 using System.Threading.Tasks;
 
 
-    public class MoviesController : Controller
-    {
+    //public class MovieController : Controller
+    //{
     
     
-    private  readonly MovieDatabaseSqlContext _context;
-     private  readonly IReviewService _reviewservice;
+    //private  readonly MovieDatabaseSqlContext _context;
+     //private  readonly IReviewService _reviewservice;
     
-     public MoviesController (MovieDatabaseSqlContext context, IReviewService reviewService)
-    {
+     //public MoviesController (MovieDatabaseSqlContext context, IReviewService reviewService)
+    //{
        
-       _context = context;
-       _reviewservice = reviewService;
+       //_context = context;
+      // _reviewservice = reviewService;
    
-    }  
+   // }  
 
-        public async Task<IActionResult> Index()
-    {
+        //public async Task<IActionResult> Index()
+   /*/ {
         var movies = await _context.Movies
         .OrderBy(m => m.Title)
         .ToListAsync();
