@@ -59,7 +59,7 @@ using System.Threading.Tasks;
 
     }
     [HttpGet("{id:int}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<ActionResult<Movie>> GetMovie(string id)
      {
         var movie = await _context.Movies
         .AsNoTracking()
@@ -83,7 +83,7 @@ using System.Threading.Tasks;
         }
      }   
         [HttpPut("{id:int}")]
-        public async Task<IActionResult>Update(int id, [FromBody] Movie movie)
+        public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
         if(id != movie.Id)     
 
@@ -122,7 +122,7 @@ using System.Threading.Tasks;
     }
     
     [HttpGet("{id:int}/review")]
-    public async Task<ActionResult<IEnumerable<Review>>>GetReviews(int id)
+    public async Task<ActionResult<IEnumerable<Review>>>GetReviews(string id)
 
     {
         var exist = await _context.Movies.AnyAsync(m => m.Id ==id);
