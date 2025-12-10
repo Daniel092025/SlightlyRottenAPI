@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Project.Database;
+using Project.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +26,7 @@ builder.Services.AddSwaggerGen(options =>
 
 // Databasen og service. Er ish navn / placeholder navn.
 
-builder.Services.AddDbContext<MovieDb>(options =>
+builder.Services.AddDbContext<MovieDatabaseSqlContext>(options =>
     options.UseSqlite("Data Source = MovieDb"));
 builder.Services.AddScoped<IMovieService, MovieService>();
 

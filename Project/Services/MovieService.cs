@@ -1,11 +1,12 @@
-using Project.Database;
+using Project.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 public class MovieService : IMovieService
 {
-    private readonly MovieDb _context;
+    private readonly MovieDatabaseSqlContext _context;
 
-    public MovieService(MovieDb context)
+    public MovieService(MovieDatabaseSqlContext context)
     {
         _context = context;
     }
