@@ -110,8 +110,8 @@ using System.Threading.Tasks;
             return NoContent();
     }
     
-    [HttpDelete("{id:int}")]
-    public async Task<ActionResult>Delete(int id )
+    [HttpDelete("{id:string}")]
+    public async Task<ActionResult>Delete(string id )
     {
       var movie = await _context.Movies.FindAsync(id);
       if (movie == null)
@@ -123,7 +123,7 @@ using System.Threading.Tasks;
     }
     
     [HttpGet("{id:int}/review")]
-    public async Task<ActionResult<IEnumerable<Review>>> G(int id)
+    public async Task<ActionResult<IEnumerable<Review>>> GetreviewsByMovieIdAsync(int id)
 
     {
         if (!await _context.Movies.AnyAsync(m => m.Id ==id))
