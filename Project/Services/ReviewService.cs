@@ -32,7 +32,7 @@ public class ReviewService : IReviewService
 
         
     }
-    public async Task<List<Review>> GetReviewByMovieIdAsync(int MovieId)
+    public async Task<List<Review>> GetReviewsByMovieIdAsync(int MovieId)
     {
         return await _context.Reviews
         .Where(r => r.MovieId == MovieId)

@@ -11,7 +11,7 @@ public class Review
     public string UserId { get; set; } = "";
 
     // Nullable foreign keys (bare én brukes)
-    public Movie? Movie { get; set; }
+    public string? Movie { get; set; }
      public int? MovieId { get; set; }
 
 }

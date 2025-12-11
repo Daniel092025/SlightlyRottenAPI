@@ -21,7 +21,7 @@ using System.Threading.Tasks;
    // }  
 
         //public async Task<IActionResult> Index()
-   /*/ {
+  /*   {
         var movies = await _context.Movies
         .OrderBy(m => m.Title)
         .ToListAsync();
@@ -32,5 +32,5 @@ using System.Threading.Tasks;
 
 
 }
-
+ */
 
