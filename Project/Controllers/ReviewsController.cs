@@ -15,8 +15,20 @@ using System.Threading.Tasks;
 [Route("api/Controller")]
     public class MoviesController : ControllerBase
     {
+    //Get all movies = /Movies
+    //Get  Movie by ID = /Movie/{ID}
+    //Get  Movie search string = /Movie/{Tittle}
+    //Get  Movie by top 10 = Movie/Top10
+    //Post Movie rating = Movie/Rate
+    //Post Movie review = Movie/Review
+    //post new Movie = Movies/New
+    //Delete Movie = Movie/Delete/{ID}
+    //Update Movie = Movie/Update/{ID}
+
     
-    
+    //Nice to have !
+    // Get movie by year = Movie/{Year}
+    // 
     private  readonly MovieDatabaseSqlContext _context;
      private  readonly IReviewService _reviewservice;
     
