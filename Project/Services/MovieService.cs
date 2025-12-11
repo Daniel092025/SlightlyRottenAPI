@@ -16,10 +16,10 @@ public class MovieService : IMovieService
         return await _context.Movies.ToListAsync();
     }
 
-    public async Task<Movie?> GetMovieByImdbIdAsync(string imdbId)
+    public async Task<Movie?> GetMovieByImdbIdAsync(string Id)
     {
         return await _context.Movies
-            .FirstOrDefaultAsync(m => m.Id == imdbId);
+            .FirstOrDefaultAsync(m => m.Id == Id);
     }
 
     public async Task<IEnumerable<Movie>> SearchMoviesAsync(string query)

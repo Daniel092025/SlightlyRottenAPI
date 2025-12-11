@@ -5,13 +5,13 @@ public class Review
 {
     public string? Id { get; set; }
 
-    public int Rating { get; set; }      // 1–5
+    public double Rating { get; set; }     
     public string Comment { get; set; } = "";
 
     public string UserId { get; set; } = "";
 
-    // Nullable foreign keys (bare én brukes)
-    public string? Movie { get; set; }
+
      public int? MovieId { get; set; }
 
 }
+
