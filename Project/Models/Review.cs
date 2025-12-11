@@ -11,7 +11,7 @@ public class Review
     public string UserId { get; set; } = "";
 
 
-     public int? MovieId { get; set; }
+     public string? MovieId { get; set; }
 
 }
 
