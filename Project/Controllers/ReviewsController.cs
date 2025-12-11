@@ -86,7 +86,7 @@ using System.Threading.Tasks;
         [HttpPut("{id:string}")]
         public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
-        if(id ! = movie.Id)     
+        if(id != movie.Id)     
 
         return BadRequest();
 
