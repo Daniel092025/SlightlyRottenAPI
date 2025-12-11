@@ -2,8 +2,8 @@
 
 public interface IStatisticService
 {
-    Task<double> GetAverageRatingAsync(string imdbId);
-    Task<int> GetReviewCountAsync(string imdbId);
+    Task<double> GetAverageRatingAsync(string Id);
+    Task<int> GetReviewCountAsync(string Id);
     Task<Dictionary<int, int>> GetRatingDistributionAsync(string imdbId);
 
     Task<IEnumerable<TopRatedItem>> GetTopRatedMoviesAsync(int count = 10);
@@ -12,7 +12,7 @@ public interface IStatisticService
 }
 public class TopRatedItem
 {
-    public string? ImdbId { get; set; }
+    public string? Id { get; set; }
     public string? Title { get; set; }
     public double AverageRating { get; set; }
     public int ReviewCount { get; set; }

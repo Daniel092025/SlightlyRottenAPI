@@ -10,9 +10,9 @@ public interface IReviewService
 
 public interface IRatingService
 {
-    Task<double> AddOrUpdateRatingAsync(string Id, string userId, int rating);
-    Task<double> RemoveRatingAsync(string Id, string userId);
+    Task<double> AddOrUpdateRatingAsync(string Id, int rating);
+    Task<double> RemoveRatingAsync(string Id);
 
     Task<double> GetAverageRatingAsync(string Id);
-    Task<int> GetUserRatingAsync(string Id, string userId);
+    Task<int> GetUserRatingAsync(string Id);
 }

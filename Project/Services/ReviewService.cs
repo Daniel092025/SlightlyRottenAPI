@@ -25,7 +25,6 @@ public class ReviewService : IReviewService
 
         existingReview.Rating = updated.Rating;
         existingReview.Comment = updated.Comment;
-        existingReview.UserId = updated.UserId;
 
         await _context.SaveChangesAsync();
         return existingReview;
