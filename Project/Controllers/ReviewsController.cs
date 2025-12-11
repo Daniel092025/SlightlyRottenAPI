@@ -12,11 +12,23 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 [ApiController]
-[Route("api/Controller")]
+[Route("api/movies")]
     public class MoviesController : ControllerBase
     {
+    //Get all movies = /Movies
+    //Get  Movie by ID = /Movie/{ID}
+    //Get  Movie search string = /Movie/{Tittle}
+    //Get  Movie by top 10 = Movie/Top10
+    //Post Movie rating = Movie/Rate
+    //Post Movie review = Movie/Review
+    //post new Movie = Movies/New
+    //Delete Movie = Movie/Delete/{ID}
+    //Update Movie = Movie/Update/{ID}
+
     
-    
+    //Nice to have !
+    // Get movie by year = Movie/{Year}
+    // 
     private  readonly MovieDatabaseSqlContext _context;
      private  readonly IReviewService _reviewservice;
     
@@ -58,7 +70,7 @@ using System.Threading.Tasks;
         return Ok(movies);
 
     }
-    [HttpGet("{id:string}")]
+    [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(string id)
      {
         var movie = await _context.Movies
@@ -83,7 +95,7 @@ using System.Threading.Tasks;
 
         
      }   
-        [HttpPut("{id:string}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
         if(id != movie.Id)     
@@ -110,7 +122,7 @@ using System.Threading.Tasks;
             return NoContent();
     }
     
-    [HttpDelete("{id:string}")]
+    [HttpDelete("{id}")]
     public async Task<ActionResult>Delete(string id )
     {
       var movie = await _context.Movies.FindAsync(id);
@@ -122,7 +134,7 @@ using System.Threading.Tasks;
       return NoContent();
     }
     
-    [HttpGet("{id:int}/review")]
+    [HttpGet("{id}/review")]
     public async Task<ActionResult<IEnumerable<Review>>>GetReviews(string id)
 
     {
