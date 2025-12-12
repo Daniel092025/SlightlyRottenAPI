@@ -29,3 +29,35 @@ Raw data origin: https://github.com/itiievskyi/IMDB-Top-250/blob/master/imdb_top
 | tt0137523 | Fight Club                                                | Drama                                         | 139      | David Fincher          | Samuel L Jackson     | 1999 | NULL   | NULL           |
 | tt0120737 | The Lord of the Rings: The Fellowship of the Ring         | Drama \| Fantasy \| Adventure                | 178      | Peter Jackson          | Gandalf              | 2001 | NULL   | NULL           |
 
+
+## API Endpoints
+
+- GET /api/movies - List movies with search and pagination
+
+- GET /api/movies/{id} - Get movie by ID
+
+- POST /api/movies - Create new movie
+
+- PUT /api/movies/{id} - Update movie
+
+- DELETE /api/movies/{id} - Delete movie
+
+- GET /api/movies/{id}/review - Get reviews for a movie
+
+#### Quick Start
+```bash
+dotnet run --project Project
+```
+
+## Testing the API
+
+### Using Swagger UI
+1. Run the application: `dotnet run --project Project`
+2. Navigate to `http://localhost:[port]`
+3. Click on any endpoint to expand it
+4. Click "Try it out", fill in parameters, and click "Execute"
+
+#### Example: Get All Movies
+```bash
+curl -X GET "http://localhost:5000/api/movies?page=1&pagesize=20" -H "accept: application/json"
+```
