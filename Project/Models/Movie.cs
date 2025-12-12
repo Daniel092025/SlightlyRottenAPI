@@ -6,7 +6,7 @@ namespace Project.Models;
 // Scaffolded(reverse engineered) using EF Core from MovieDatabaseSQL 
 public partial class Movie
 {
-    public string? Id { get; set; }
+    public required string Id { get; set; }
 
     public string? Title { get; set; }
 
