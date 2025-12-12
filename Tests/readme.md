@@ -1,6 +1,6 @@
 # Tester 
 
-## MovieTests
+### MovieTests
 
 *Movie_CanBeCreated_WithValidValues*
 - Denne tester om man kan legge til en film å lagre data rett.
@@ -19,3 +19,4 @@
 *Movie_CanHaveDifferentPlaytimes*
 - Sjekker at playtimes kan ha forskjellige verdier.
 
+--------------
