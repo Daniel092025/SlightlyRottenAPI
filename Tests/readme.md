@@ -1,6 +1,6 @@
 # Tester 
 
-## MovieTests
+### MovieTests
 
 *Movie_CanBeCreated_WithValidValues*
 - Denne tester om man kan legge til en film å lagre data rett.
@@ -8,8 +8,9 @@
 - Filmen har korrekte verdier
 - Passer på at Movie.cs funker som den skal
 
-*Movie_PropertiesCanBeNull*
+*Movie_OptionalPropertiesCanBeNull*
 - Tester at verdier kan inneholde null verdi, siden vi har tillat det med "string?"
+- Men ikke ID! Den kan ikke være null // Endret i ettertid
 - Tester dette da man kan evt. legge til en film uten alle verdier.
 
 *Movie_CanHaveDifferentYears*
@@ -17,3 +18,5 @@
 
 *Movie_CanHaveDifferentPlaytimes*
 - Sjekker at playtimes kan ha forskjellige verdier.
+
+--------------

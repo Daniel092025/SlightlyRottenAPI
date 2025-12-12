@@ -1,5 +1,7 @@
 using Xunit;
 using Project.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 
 public class MovieTests
@@ -32,19 +34,19 @@ public class MovieTests
     }
 
     [Fact]
-    public void Movie_PropertiesCanBeNull()
+    public void Movie_OptionalPropertiesCanBeNull()
     {
         // Arrange & Act
         var movie = new Movie
         {
-            Id = null,
+            Id = "tt0000000", // Id is required, kan ikke være null
             Title = null,
             Genre = null,
             Director = null,
             Actors = null
         };
         // Assert
-        Assert.Null(movie.Id);
+        Assert.NotNull(movie.Id); // Id skal alltid ha verdi
         Assert.Null(movie.Title);
         Assert.Null(movie.Genre);
         Assert.Null(movie.Director);
@@ -60,7 +62,7 @@ public class MovieTests
     public void Movie_CanHaveDifferentYears(int year)
     {
         // Arrange & Act
-        var movie = new Movie { Year = year };
+        var movie = new Movie { Id = "tt0000000", Year = year };
 
         // Assert
         Assert.Equal(year, movie.Year);
@@ -74,9 +76,9 @@ public class MovieTests
     public void Movie_CanHaveDifferentPlaytimes(int playtime)
     {
         // Arrange & Act
-        var movie = new Movie { Playtime = playtime };
+        var movie = new Movie { Id = "tt0000000", Playtime = playtime };
 
         // Assert
         Assert.Equal(playtime, movie.Playtime);
-    }       
+    }   
 }
