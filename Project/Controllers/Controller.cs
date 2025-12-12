@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
-
+namespace Project.controllers;
 
 
 [ApiController]
@@ -68,7 +68,7 @@ using Project.Models;
     
 
     }
-    [HttpGet("Top 10")]
+    [HttpGet("Top10")]
     public async Task<ActionResult<IEnumerable<Movie>>> GetTop10movies()
     {
         var Top10 = await _context.Movies
@@ -91,7 +91,7 @@ using Project.Models;
        return movie is null? NotFound() : Ok(movie);
     }
     
-    [HttpPost("New")]
+    [HttpPost("/New")]
     public async Task<ActionResult<Movie>> Create([FromBody] Movie movie)
     {
         if(!ModelState.IsValid)
@@ -106,7 +106,7 @@ using Project.Models;
 
         
      }   
-        [HttpPut("{id}/Update")]
+        [HttpPut("/Update")]
         public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
         if(id != movie.Id)     
@@ -145,20 +145,20 @@ using Project.Models;
       return NoContent();
     }
     
-    [HttpPatch("{id}/updatereview")]
-    public async Task<IActionResult> UpdateReview(string id, [FromBody] Movie movie)
+    [HttpPatch("/updatereview")]
+    public async Task<IActionResult> UpdateReview(string id, [FromBody] ReviewDto dto)
 
     {
         var existing = await _context.Movies.FindAsync(id);
         if (existing == null)
         return NotFound();
 
-        existing.Review = movie.Review; 
+        existing.Review = dto.Review; 
 
         await _context.SaveChangesAsync();
         return  NoContent();        
     }
-    [HttpPatch("{id}/rating")]
+    [HttpPatch("/rating")]
     public async Task<IActionResult> RateMovie(string id,[FromBody]RateMovieDto dto)
     {
         if(!ModelState.IsValid)
