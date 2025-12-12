@@ -150,19 +150,20 @@ using System.Threading.Tasks;
       return NoContent();
     }
     
-    [HttpGet("{id}/review")]
-    public async Task<ActionResult<IEnumerable<Review>>>GetReviews(string id)
+    [HttpPatch("{id}/updatereview")]
+    public async Task<IActionResult> UpdateReview(string id, [FromBody] Movie movie)
 
     {
-        if (!await _context.Movies.AnyAsync(m => m.Id ==id))
+        var existing = await _context.Movies.FindAsync(id);
+        if (existing == null)
         return NotFound();
 
-        var reviews = await _reviewservice.GetReviewsByMovieIdAsync(id);
+        existing.Review = movie.Review; 
 
-        return Ok(reviews);
-        
+        await _context.SaveChangesAsync();
+        return  NoContent();        
     }
-    [HttpPost("{id}/rate")]
+    [HttpPut("{id}/rating")]
     public async Task<IActionResult> RateMovie(string id,[FromBody]RateMovieDto dto)
     {
         if(!ModelState.IsValid)
@@ -172,12 +173,13 @@ using System.Threading.Tasks;
         if (movie == null)
         return NotFound("Fant ikke filmen");
 
-        await _reviewservice.AddReviewAsync(id,dto.Username,dto.Rating,dto.comment);
-        
-        return Ok(new {message = "Takk for rating og anmeldelse!"});
+        movie.Rating =dto.Rating;
+
+        await _context.SaveChangesAsync();
+        return NoContent();
 
     }
-
+   
     
     }
 
