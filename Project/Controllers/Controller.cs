@@ -1,15 +1,10 @@
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Http.HttpResults;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Storage;
 using Project.Models;
-using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
+
+
+
 
 [ApiController]
 [Route("api/movies")]
