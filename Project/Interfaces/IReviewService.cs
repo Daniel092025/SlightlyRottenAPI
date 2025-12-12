@@ -6,6 +6,7 @@ public interface IReviewService
     Task<Review?> UpdateReviewAsync(int reviewId, Review updated);
 
     Task<List<Review>> GetReviewsByMovieIdAsync(string movieId);
+    Task AddReviewAsync(string id, string? username, int rating, string? comment);
 }
 
 public interface IRatingService
