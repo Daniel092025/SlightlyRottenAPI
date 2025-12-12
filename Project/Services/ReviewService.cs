@@ -10,20 +10,20 @@ public class ReviewService : IReviewService
         _context = context;
     }
 
-    public async Task<Review> AddReviewAsync(Review review)
+    public async Task<ReviewDto> AddReviewAsync(ReviewDto review)
     {
-        _context.Reviews.Add(review);
+        _context.Reviews.Add(ReviewDto);
         await _context.SaveChangesAsync();
         return review;
     }
-    public async Task<Review?> UpdateReviewAsync (int reviewId, Review updated)
+    public async Task<ReviewDto?> UpdateReviewAsync (int reviewId, ReviewDto updated)
     {
         var existingReview = await _context.Reviews.FindAsync(reviewId);
 
         if (existingReview == null)
             return null;
 
-        existingReview.Rating = updated.Rating;
+        existingReview.R = updated.Rating;
         existingReview.Comment = updated.Comment;
 
         await _context.SaveChangesAsync();

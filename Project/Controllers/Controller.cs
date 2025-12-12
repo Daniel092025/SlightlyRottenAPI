@@ -163,7 +163,7 @@ using System.Threading.Tasks;
         await _context.SaveChangesAsync();
         return  NoContent();        
     }
-    [HttpPut("{id}/rating")]
+    [HttpPatch("{id}/rating")]
     public async Task<IActionResult> RateMovie(string id,[FromBody]RateMovieDto dto)
     {
         if(!ModelState.IsValid)
