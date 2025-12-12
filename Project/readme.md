@@ -1,6 +1,18 @@
 # Slightly Rotten API - A Movie DB
 
-### Dataset
+### Database
+
+SQLite DB: Data Source=./Database/MovieDatabaseSQL.db
+
+We used a csv file with top 250 imdb movies as a starting point. Then we created an SQLlite database from that, and scaffolded the Movie.cs model and MovieDataBaseSqlContext.cs using EF Core. 
+
+**Reflections**
+
+We included the actual imdb id as the primary key - the idea behind this was to have the option to further expand our API calls using existing API's that also were based on IMDB's ID format in the future.
+
+We did initially consider having a separate database for ratings and reviews - so that we could get multiple reviews/ratings per movie and have the average rating in the main database. This was not implemented due to time constraints and that we landed on having an individual database.
+
+**Dataset**
 Raw data origin: https://github.com/itiievskyi/IMDB-Top-250/blob/master/imdb_top_250.csv
 
 | Id        | Title                                                   | Genre                                         | Duration | Director               | Actors               | Year | Rating | Review         |
