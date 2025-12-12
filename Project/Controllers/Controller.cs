@@ -162,8 +162,23 @@ using System.Threading.Tasks;
         return Ok(reviews);
         
     }
-    
+    [HttpPost("{id}/rate")]
+    public async Task<IActionResult> RateMovie(string id,[FromBody]RateMovieDto dto)
+    {
+        if(!ModelState.IsValid)
+        return BadRequest(ModelState);
 
+        var movie = await _context.Movies.FindAsync(id);
+        if (movie == null)
+        return NotFound("Fant ikke filmen");
+
+        await _reviewservice.AddReviewAsync(id,dto.Username,dto.Rating,dto.comment);
+        
+        return Ok(new {message = "Takk for rating og anmeldelse!"});
+
+    }
+
+    
     }
 
     
