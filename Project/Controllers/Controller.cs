@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 [ApiController]
 [Route("api/movies")]
-    public class MoviesController : ControllerBase
+    public class Controller : ControllerBase
     {
     //Get all movies = /Movies
     //Get  Movie by ID = /Movie/{ID} //
@@ -32,7 +32,7 @@ using System.Threading.Tasks;
     private  readonly MovieDatabaseSqlContext _context;
      private  readonly IReviewService _reviewservice;
     
-     public MoviesController(MovieDatabaseSqlContext context, IReviewService reviewService)
+     public Controller(MovieDatabaseSqlContext context, IReviewService reviewService)
     {
        
        _context = context;
