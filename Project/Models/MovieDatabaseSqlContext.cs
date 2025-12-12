@@ -19,7 +19,12 @@ public partial class MovieDatabaseSqlContext : DbContext
     public virtual DbSet<Movie> Movies { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=./Database/MovieDatabaseSQL.db");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlite("Data Source=./Database/MovieDatabaseSQL.db");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

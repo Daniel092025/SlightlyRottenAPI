@@ -8,8 +8,9 @@
 - Filmen har korrekte verdier
 - Passer på at Movie.cs funker som den skal
 
-*Movie_PropertiesCanBeNull*
+*Movie_OptionalPropertiesCanBeNull*
 - Tester at verdier kan inneholde null verdi, siden vi har tillat det med "string?"
+- Men ikke ID! Den kan ikke være null // Endret i ettertid
 - Tester dette da man kan evt. legge til en film uten alle verdier.
 
 *Movie_CanHaveDifferentYears*
@@ -17,3 +18,15 @@
 
 *Movie_CanHaveDifferentPlaytimes*
 - Sjekker at playtimes kan ha forskjellige verdier.
+
+*GetMovie_ReturnsOk_WhenMovieExists*
+- Sjekker om at du kan hente en film via ID
+- Får tilbake 200 OK hvis filmen eksisterer
+- Isolerer testen med in-memory database med:
+```sharp
+var options = new DbContextOptionsBuilder<MovieDatabaseSqlContext>()
+    .UseInMemoryDatabase(Guid.NewGuid().ToString())
+    .Options;
+```
+
+-Sjekker at denne kommer tilbake med rette verdier.
