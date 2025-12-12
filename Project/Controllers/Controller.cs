@@ -77,7 +77,11 @@ using System.Threading.Tasks;
     public async Task<ActionResult<IEnumerable<Movie>>> GetTop10movies()
     {
         var Top10 = await _context.Movies
-        .OrderByDescending(m => m.)
+        .OrderByDescending(m => m.Rating)
+        .Take(10)
+        .AsNoTracking()
+        .ToListAsync();
+        return Ok(Top10);
 
     }
 
