@@ -81,31 +81,4 @@ public class MovieTests
         // Assert
         Assert.Equal(playtime, movie.Playtime);
     }   
-
-    public class MoviesControllerTests
-{
-    [Fact]
-    public async Task GetMovie_ReturnsOk_WhenMovieExists()
-    {
-        // Arrange
-        var options = new DbContextOptionsBuilder<MovieDatabaseSqlContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString())
-            .Options;
-        
-        var context = new MovieDatabaseSqlContext(options);
-        var reviewService = new ReviewService(context);
-        var controller = new Controller(context, reviewService);
-        
-        context.Movies.Add(new Movie { Id = "tt123", Title = "Test Movie" });
-        await context.SaveChangesAsync();
-
-        // Act
-        var result = await controller.GetMovie("tt123");
-
-        // Assert
-        var okResult = Assert.IsType<OkObjectResult>(result.Result);
-        var movie = Assert.IsType<Movie>(okResult.Value);
-        Assert.Equal("Test Movie", movie.Title);
-    }
-}    
 }

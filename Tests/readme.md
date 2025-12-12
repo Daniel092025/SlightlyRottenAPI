@@ -19,14 +19,3 @@
 *Movie_CanHaveDifferentPlaytimes*
 - Sjekker at playtimes kan ha forskjellige verdier.
 
-*GetMovie_ReturnsOk_WhenMovieExists*
-- Sjekker om at du kan hente en film via ID
-- Får tilbake 200 OK hvis filmen eksisterer
-- Isolerer testen med in-memory database med:
-```sharp
-var options = new DbContextOptionsBuilder<MovieDatabaseSqlContext>()
-    .UseInMemoryDatabase(Guid.NewGuid().ToString())
-    .Options;
-```
-
--Sjekker at denne kommer tilbake med rette verdier.
