@@ -16,14 +16,14 @@ using System.Threading.Tasks;
     public class MoviesController : ControllerBase
     {
     //Get all movies = /Movies
-    //Get  Movie by ID = /Movie/{ID}
+    //Get  Movie by ID = /Movie/{ID} //
     //Get  Movie search string = /Movie/{Tittle}
     //Get  Movie by top 10 = Movie/Top10
     //Post Movie rating = Movie/Rate
-    //Post Movie review = Movie/Review
-    //post new Movie = Movies/New
-    //Delete Movie = Movie/Delete/{ID}
-    //Update Movie = Movie/Update/{ID}
+    //Post Movie review = Movie/Review //
+    //post new Movie = Movies/New //
+    //Delete Movie = Movie/Delete/{ID} //
+    //Update Movie = Movie/Update/{ID} //
 
     
     //Nice to have !
@@ -39,7 +39,7 @@ using System.Threading.Tasks;
        _reviewservice = reviewService;
    
     }  
-        [HttpGet]
+        [HttpGet()] //" Get all movies"
         public async Task<ActionResult<IEnumerable<Movie>>>GetMovies(
              
              [FromQuery] string? search = null,
@@ -48,7 +48,7 @@ using System.Threading.Tasks;
     {
         if(page < 1) page = 1;
         if(pagesize < 20) pagesize = 20;
-        if(pagesize < 100) pagesize = 100;
+        if(pagesize > 100) pagesize = 100;
         
         var query = _context.Movies.AsQueryable();
 
@@ -69,8 +69,20 @@ using System.Threading.Tasks;
        
         return Ok(movies);
 
+
+    
+
     }
-    [HttpGet("{id}")]
+    [HttpGet("Top 10")]
+    public async Task<ActionResult<IEnumerable<Movie>>> GetTop10movies()
+    {
+        var Top10 = await _context.Movies
+        .OrderByDescending(m => m.)
+
+    }
+
+
+    [HttpGet("{id}/")]//Get Movie
         public async Task<ActionResult<Movie>> GetMovie(string id)
      {
         var movie = await _context.Movies
@@ -80,7 +92,7 @@ using System.Threading.Tasks;
        return movie is null? NotFound() : Ok(movie);
     }
     
-    [HttpPost]
+    [HttpPost("New")]
     public async Task<ActionResult<Movie>> Create([FromBody] Movie movie)
     {
         if(!ModelState.IsValid)
@@ -95,7 +107,7 @@ using System.Threading.Tasks;
 
         
      }   
-        [HttpPut("{id}")]
+        [HttpPut("{id}/Update")]
         public async Task<IActionResult>Update(string id, [FromBody] Movie movie)
      {
         if(id != movie.Id)     
@@ -122,7 +134,7 @@ using System.Threading.Tasks;
             return NoContent();
     }
     
-    [HttpDelete("{id}")]
+    [HttpDelete("{id}/Delete")]
     public async Task<ActionResult>Delete(string id )
     {
       var movie = await _context.Movies.FindAsync(id);
