@@ -15,7 +15,7 @@ public partial class MovieDatabaseSqlContext : DbContext
     {
     }
 
-    public DbSet<Review> Reviews { get; set; }
+    public DbSet<ReviewDto> Reviews { get; set; }
     public virtual DbSet<Movie> Movies { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
